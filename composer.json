@@ -1,18 +1,25 @@
 {
-    "name": "laravel/laravel",
+    "name": "oleksiivelychko/laravel-dashboard",
+    "homepage": "https://github.com/oleksiivelychko/laravel-dashboard",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "description": "Dashboard application based on PHP8/Laravel8. No JetStream. No Liveware. No Tailwind. Inspired by Django admin.",
+    "keywords": ["framework", "laravel", "docker", "dashboard"],
     "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleksii Velychko",
+            "email": "oleksiivelychko@icloud.com"
+        }
+    ],
     "require": {
-        "php": "^8.1",
+        "php": ">=8.1",
         "ext-gd": "*",
         "ext-intl": "*",
         "ext-pdo": "*",
         "darkaonline/l5-swagger": "^8.3.2",
         "guzzlehttp/guzzle": "^7.4.2",
-        "laravel/framework": "^9.11.0",
-        "pusher/pusher-php-server": "^7.0",
+        "laravel/framework": "^9.18.0",
+        "pusher/pusher-php-server": "^7.0.2",
         "vladimir-yuldashev/laravel-queue-rabbitmq": "^12.0.1"
     },
     "require-dev": {
@@ -23,7 +30,7 @@
         "mockery/mockery": "^1.5.0",
         "nunomaduro/collision": "^6.2.0",
         "phpunit/phpunit": "^9.5.20",
-        "spatie/laravel-ignition": "^1.2.2"
+        "spatie/laravel-ignition": "^1.2.3"
     },
     "autoload": {
         "psr-4": {
