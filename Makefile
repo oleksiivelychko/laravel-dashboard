@@ -1,22 +1,25 @@
+dockerexec := docker-compose exec laravel-app
+dockerexecapp := $(dockerexec) php artisan
+
 artisan-app-generate:
-	docker-compose exec laravel-app php artisan key:generate --ansi
+	$(dockerexecapp) key:generate --ansi
 
 artisan-migrate-refresh:
-	docker-compose exec laravel-app php artisan migrate:refresh --force
+	$(dockerexecapp) migrate:refresh --force
 
 artisan-db-seed:
-	docker-compose exec laravel-app php artisan db:seed --force
+	$(dockerexecapp) db:seed --force
 
 artisan-storage-link:
-	docker-compose exec laravel-app php artisan storage:link
+	$(dockerexecapp) storage:link
 
 artisan-test:
-	docker-compose exec laravel-app php artisan test
+	$(dockerexecapp) test
 
 composer-install:
-	docker-compose exec laravel-app rm -rf vendor
-	docker-compose exec laravel-app rm -f composer.lock
-	docker-compose exec laravel-app composer install
+	$(dockerexec) rm -rf vendor
+	$(dockerexec) rm -f composer.lock
+	$(dockerexec) composer install
 
 create-project:
 	composer create-project laravel/laravel laravel-dashboard
@@ -38,26 +41,26 @@ heroku-packs:
 	heroku buildpacks -a oleksiivelychkolaravelboard
 
 ide-helper:
-	docker-compose exec laravel-app php artisan ide-helper:generate
-	docker-compose exec laravel-app php artisan ide-helper:meta
-	docker-compose exec laravel-app php artisan ide-helper:models -N
+	$(dockerexecapp) ide-helper:generate
+	$(dockerexecapp) ide-helper:meta
+	$(dockerexecapp) ide-helper:models -N
 
 npm-dev:
-	docker-compose exec laravel-app npm run dev
+	$(dockerexec) npm run dev
 
 npm-install:
-	rm -rf node_modules
-	rm -f package-lock.json
-	docker-compose exec laravel-app npm i
+	$(dockerexec) rm -rf node_modules
+	$(dockerexec) rm -f package-lock.json
+	$(dockerexec) npm i
 
 npm-update:
-	docker-compose exec laravel-app ncu -u
+	$(dockerexec) ncu -u
 
 npm-watch:
-	docker-compose exec laravel-app npm run watch
+	$(dockerexec) npm run watch
 
 optimize-dev:
-	docker-compose exec laravel-app sh /var/www/.docker/shell/optimize-dev.sh
+	$(dockerexec) sh /var/www/.docker/shell/optimize-dev.sh
 
 php-test:
-	docker-compose exec laravel-app ./vendor/bin/phpunit
+	$(dockerexec) ./vendor/bin/phpunit
