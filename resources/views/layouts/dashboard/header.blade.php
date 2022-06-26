@@ -19,7 +19,7 @@
             <input class="form-control form-control-dark w-100"
                    type="search"
                    id="search"
-                   placeholder="{{ __('dashboard.search') }}"
+                   placeholder="🔎&nbsp;&nbsp;{{ __('dashboard.search') }} . . ."
                    aria-label="{{ __('dashboard.search') }}">
         </form>
         <div id="searchResults" class="d-none"></div>

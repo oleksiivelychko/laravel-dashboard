@@ -56,7 +56,7 @@ return [
     'same_address' => 'Same address',
     'shipping-address' => 'Shipping address',
     'billing-address' => 'Billing address',
-    'search' => 'search',
+    'search' => 'Search',
     'modal' => [
         'delete' => 'Delete entry',
         'delete-message' => 'Are you sure you want to delete the entry?',
