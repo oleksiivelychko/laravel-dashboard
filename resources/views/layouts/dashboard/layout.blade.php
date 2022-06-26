@@ -13,6 +13,7 @@
     @include('layouts.dashboard.header')
 
     <div class="loader">
+
         <div class="container-fluid mb-5">
             <div class="row">
                 @include('layouts.dashboard.sidebar')

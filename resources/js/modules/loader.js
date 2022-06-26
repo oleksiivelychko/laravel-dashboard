@@ -7,11 +7,11 @@ const setVisible = (elementOrSelector, visible) =>
             : elementOrSelector
     ).style.display = visible ? 'block' : 'none';
 
-setVisible('.loader', false);
+//setVisible('.loader', false);
 setVisible('#loader', true);
 
 document.addEventListener('DOMContentLoaded', () =>
-    wait(500).then(() => {
-        setVisible('.loader', true);
+    wait(800).then(() => {
+        //setVisible('.loader', true);
         setVisible('#loader', false);
     }));
