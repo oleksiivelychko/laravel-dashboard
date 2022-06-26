@@ -7,7 +7,6 @@ use App\Http\Middleware\AllowOnlyAjaxRequests;
 use App\Http\Middleware\IsVerifiedEmail;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Illuminate\Session\Middleware\AuthenticateSession;
 
 class Kernel extends HttpKernel
 {

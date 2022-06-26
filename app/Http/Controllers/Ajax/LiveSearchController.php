@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\AJAX;
+namespace App\Http\Controllers\Ajax;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
