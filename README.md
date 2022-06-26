@@ -12,7 +12,7 @@ password: secret
 
 📌 Generate wildcard certificate:
 ```
-openssl req -x509 -out .docker/certs/localhost.crt -keyout .docker/certs/localhost.key \
+openssl req -x509 -days 365 -out .docker/certs/localhost.crt -keyout .docker/certs/localhost.key \
       -newkey rsa:2048 -nodes -sha256 \
       -subj '/CN=laravel-dashboard.local' -extensions EXT -config <( \
        printf "[dn]\nCN=laravel-dashboard.local\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:laravel-dashboard.local,DNS:mail.laravel-dashboard.local\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
