@@ -7,36 +7,31 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\DB;
 
-
-class SearchController extends Controller
+final class SearchController extends Controller
 {
-    protected array $searchEntities;
-
-    public function __construct()
-    {
-        /**
-         * Table name => Route name
-         */
-        $this->searchEntities = [
-            'categories' => 'category.edit',
-            'products' => 'product.edit'
-        ];
-    }
+    /**
+     * Table name => Route name
+     */
+    private const SEARCH_ENTITIES = [
+        'categories'    => 'category.edit',
+        'products'      => 'product.edit',
+    ];
 
     public function search(Request $request, string $locale): JsonResource
     {
-        $querySearch = $request->get('querySearch');
-        if (!$querySearch) {
+        $querySearch = strtolower($request->get('querySearch', ''));
+        if (empty($querySearch)) {
             return new JsonResource([]);
         }
 
         $queryBuilder = null;
-        foreach ($this->searchEntities as $table=>$route) {
+        foreach (self::SEARCH_ENTITIES as $table=>$route) {
+            $raw = "lower(json_unquote(json_extract(`name`, '$.\"$locale\"'))) like ?";
             $query = DB::table($table)
                 ->select(['id', "name->$locale as text", DB::raw("'$route' as route_name")])
-                ->where("name->$locale", 'LIKE', $querySearch . '%')
-                ->orWhere("name->$locale", 'LIKE', '%' . $querySearch . '%')
-                ->orWhere("name->$locale", 'LIKE', '%' . $querySearch);
+                ->whereRaw($raw, ["%$querySearch%"])
+                ->orWhereRaw($raw, ["%$querySearch"])
+                ->orWhereRaw($raw, ["$querySearch%"]);
 
             $queryBuilder = $queryBuilder ? $queryBuilder->union($query) : $query;
         }

@@ -13,7 +13,6 @@ use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
-
 class CategoryController extends Controller
 {
     public function index(Request $request, Category $categories, string $locale): Factory|View|Application
