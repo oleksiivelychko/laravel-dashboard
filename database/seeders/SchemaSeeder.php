@@ -18,9 +18,9 @@ class SchemaSeeder extends Seeder
                 DB::statement('SET FOREIGN_KEY_CHECKS=1;');
                 break;
             case 'pgsql':
-                //DB::statement("SET session_replication_role = 'replica';");
-                //$entityClassName::truncate();
-                //DB::statement("SET session_replication_role = 'origin';");
+                DB::statement("SET session_replication_role = 'replica';");
+                $entityClassName::truncate();
+                DB::statement("SET session_replication_role = 'origin';");
                 break;
             case 'sqlite':
                 DB::statement('PRAGMA foreign_keys = OFF;');
